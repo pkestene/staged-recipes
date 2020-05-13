@@ -1,0 +1,42 @@
+{% set name = "mkdocs-material-extensions" %}
+{% set version = "1.0b2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 838580195f3f4d6c937238b1ce81365744348bca8bb2c694028aacf21bfac518
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - python >3
+    - pip
+    - setuptools
+  run:
+    - mkdocs >=1.1
+    - python >3
+
+test:
+  imports:
+    - materialx
+
+about:
+  home: https://github.com/facelessuser/mkdocs-material-extensions
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'Markdown extension resources for MkDocs Material'
+  doc_url: https://github.com/facelessuser/mkdocs-material-extensions
+  dev_url: https://github.com/facelessuser/mkdocs-material-extensions
+
+extra:
+  recipe-maintainers:
+    - facelessuser
+    - pkestene
