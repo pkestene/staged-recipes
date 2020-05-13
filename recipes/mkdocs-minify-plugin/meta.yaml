@@ -1,0 +1,42 @@
+{% set name = "mkdocs-minify-plugin" %}
+{% set version = "0.3.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/byrnereese/mkdocs-minify-plugin/archive/{{ version }}.tar.gz
+  sha256: edc4e77c619db529bbf58aaf87fe01cf754e746f8dcfafec812e1cb182f67fda
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - python >3
+    - pip
+    - setuptools
+  run:
+    - mkdocs >=1
+    - python >3
+
+test:
+  imports:
+    - mkdocs_minify_plugin
+
+about:
+  home: https://github.com/byrnereese/mkdocs-minify-plugin
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'An MkDocs plugin to minify HTML and/or JS files prior to being written to disk.'
+  doc_url: https://github.com/byrnereese/mkdocs-minify-plugin
+  dev_url: https://github.com/byrnereese/mkdocs-minify-plugin
+
+extra:
+  recipe-maintainers:
+    - byrnereese
+    - pkestene
